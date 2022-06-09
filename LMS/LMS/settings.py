@@ -26,7 +26,7 @@ SECRET_KEY = 'e+e#vq+j1^$m+ipl$m6n$&fk!k!ewtkoqe$4--!#tfvx&j5w#&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lmsapp1.herokuapp.com/','127.0.0.1']
 
 
 # Application definition
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms'
+    'crispy_forms',
+    'whitenoise.runserver_nostatic',
 
 ]
 
@@ -51,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'LMS.urls'
@@ -133,3 +136,5 @@ LOGIN_REDIRECT_URL="/home"
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR, ]
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
