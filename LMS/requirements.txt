@@ -1,3 +1,4 @@
+pywin32==304
 altgraph==0.17
 argon2-cffi==21.1.0
 asgiref==3.5.1
